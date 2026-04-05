@@ -1,0 +1,186 @@
+#include <stdio.h>
+#include <string.h>
+
+//Struct [Student Management System (SMS)]
+struct SMS{
+    char Student_Name[100];
+    int Student_RollNumber;
+    int Student_Age;
+    char Student_Course[100];
+    float Student_Marks;
+};
+
+struct SMS S[100];
+int count = 0;
+
+//Add_Student
+void Add_Student(){
+    if(count >= 100){
+        printf("Limit reched\n");
+        return;
+    }
+    
+    printf("Enter the Student_Name: ");
+    scanf("%s", &S[count].Student_Name);
+    
+    printf("Enter the Student_RollNumber: ");
+    scanf("%d", &S[count].Student_RollNumber);
+    
+    printf("Enter the Age of the Student: ");
+    scanf("%d", &S[count].Student_Age);
+    
+    printf("Enter the Course of the student: ");
+    scanf("%s", &S[count].Student_Course);
+     
+    printf("Enter the Student_Marks: ");
+    scanf("%f", &S[count].Student_Marks);
+    
+    count++;
+    printf("Student Add Successfully.\n");
+}
+
+//Display_student
+void Display_Student(){
+    int i;
+    
+    if(count == 0){
+        printf("No student is found.\n");
+        return;
+    }
+    
+    printf("\nStudent_Name\tStudent_RollNumber\tStudent_Age\tStudent_Course\tStudent_Marks\n");
+    
+    for(i = 0; i < count; i++){
+        printf("%s\t%d\t%d\t%s\t%.2f\n",
+        S[i].Student_Name,
+        S[i].Student_RollNumber,
+        S[i].Student_Age,
+        S[i].Student_Course,
+        S[i].Student_Marks);
+    }
+}
+
+//Searching Student
+void Search_Student(){
+    int RollNumber, i, found = 0;
+    
+    printf("Enter Student_RollNumber for searching: ");
+    scanf("%d", &RollNumber);
+    
+    for(i = 0; i < count; i++){
+        if(S[i].Student_RollNumber == RollNumber){
+            printf("\nStudent Not found.\n");
+            printf("Student_Name: %s\nStudent_RollNumber: %d\nStudent_Age: %d\nStudent_Course: %s\nStudent_Marks: %.2f\n",
+            S[i].Student_Name,
+            S[i].Student_RollNumber,
+            S[i].Student_Age,
+            S[i].Student_Course,
+            S[i].Student_Marks);
+            
+            found = 1;
+            break;
+        }
+    }
+    
+    if(!found){
+        printf("Student Not Found.\n");
+    }
+}
+
+//Update Student
+void  Update_Student(){
+    int RollNumber, i, found = 0;
+    
+    printf("Enter Student_RollNumber to update: ");
+    scanf("%d", &RollNumber);
+    
+    for(i = 0; i < count; i++){
+        if(S[i].Student_RollNumber == RollNumber){
+            printf("Enter New Student_Name: ");
+            scanf("%s", S[i].Student_Name);
+            
+            printf("Enter new Student_Age: ");
+            scanf("%s", S[i].Student_Age);
+            
+            printf("Enter new Student_Course: ");
+            scanf("%s", S[i].Student_Course);
+            
+            printf("Enter new Student_Marks: ");
+            scanf("%f", S[i].Student_Marks);
+            
+            printf("Record Update Successfully.\n");
+            found = 1;
+            break;
+        }
+    }
+    
+    if(!found){
+        printf("Student not update.\n");
+    }
+}
+
+//Delete_Student
+void Delete_Student(){
+    int RollNumber, i, j, found = 0;
+    
+    printf("Enter The Student_RollNumber to detete: ");
+    scanf("%d", &RollNumber);
+    
+    for(i = 0; i < count; i++){
+        if(S[i].Student_RollNumber == RollNumber){
+            for(j = i; j < count - 1; j++){
+                S[j] = S[j + 1];
+            }
+            count--;
+            printf("Student Record Delete Successfully.\n");
+            found = 1;
+            break;
+        }
+    }
+    
+    if(!found){
+        printf("Student not found.\n");
+    }
+}
+
+//Main 
+int main(){
+    int choice;
+    
+    while(1){
+        printf("\n=======Student Management System=======\n");
+        printf("1. Add_Student\n2. Display_Student\n3. Search_Student\n4. Update_Student\n5. Delete_Student\n6. Exit\n");
+        
+        printf("Enter Your Choice: ");
+        scanf("%d", &choice);
+        
+        switch(choice){
+            case 1: 
+            Add_Student(); 
+            break;
+            
+            case 2: 
+            Display_Student; 
+            break;
+            
+            case 3: 
+            Search_Student(); 
+            break;
+            
+            case 4: 
+            Update_Student(); 
+            break;
+            
+            case 5: 
+            Delete_Student(); 
+            break;
+            
+            case 6: 
+            return 0;
+            
+            default: 
+            printf("Invalid choice.\n");
+        }
+    }
+}
+
