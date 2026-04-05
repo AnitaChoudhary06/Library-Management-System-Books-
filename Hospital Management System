@@ -1,0 +1,201 @@
+#include<stdio.h>
+#include<string.h>
+
+struct Patient{
+    int Patient_ID;
+    char Patient_Name[100];
+    int Patient_Age;
+    char Patient_Gender[10];
+    char Patient_Disease[100];
+    char Assigned_Doctor[100];
+    int Patient_AdmissionDate;
+    int Patient_Bill;
+};
+
+struct Patient P[100];
+int count = 0;
+
+
+//Add_Patient
+void  Add_Patient(){
+    printf("Enter Patient_ID: ");
+    scanf("%d", &P[count].Patient_ID);
+    
+    printf("Enter Patient_Name: ");
+    scanf("%s", P[count].Patient_Name);
+    
+    printf("Enter Patient_Age: ");
+    scanf("%d", &P[count].Patient_Age);
+    
+    printf("Enter Patient_Gender: ");
+    scanf("%s", P[count].Patient_Gender);
+    
+    printf("Enter Patient_Disease: ");
+    scanf("%s", P[count].Patient_Disease);
+    
+    printf("Enter Patient_AdmissionDate: ");
+    scanf("%d", &P[count].Patient_AdmissionDate);
+    
+    printf("Enter Patient_Bill: ");
+    scanf("%d", &P[count].Patient_Bill);
+    
+    printf("Enter Assigned_Doctor: ");
+    scanf("%s",  P[count].Assigned_Doctor);
+    
+    count++;
+    printf("Patient Added Successfully.\n");
+}
+
+
+//View Patient
+void View_Patient(){
+    int i;
+    for(i = 0; i < count; i++){
+        printf("\nPatient_ID: %d", P[i].Patient_ID);
+        printf("\nPatient_Name: %s", P[i].Patient_Name);
+        printf("\nPatient_Age: %d", P[i].Patient_Age);
+        printf("\nPatient_Gender: %s", P[i].Patient_Gender);
+        printf("\nPatient_Disease: %s", P[i].Patient_Disease);
+        printf("\nAssigned_Doctor: %s", P[i].Assigned_Doctor);
+        printf("\nPatient_AdmissionDate: %d", P[i].Patient_AdmissionDate);
+        printf("\nPatient_Bill: %d", P[i].Patient_Bill);
+    }
+}
+
+
+//Search_Patient
+void Search_Patient(){
+    int ID, i, found = 0;
+    
+    printf("Enter Patient_ID: ");
+    scanf("%d", &ID);
+    
+    for(i = 0; i < count; i++){
+        if(P[i].Patient_ID == ID){
+            printf("\nPrintf Found!\n");
+            printf("Patient_Name: %s\n", P[i].Patient_Name);
+            printf("Patient_Disease: %s\n", P[i].Patient_Disease);
+            printf("Assigned_Doctor: %s\n", P[i].Assigned_Doctor);
+            
+            found = 1;
+        }
+    }
+    
+    if(found == 0){
+        printf("Patient is not found!\n");
+    }
+}
+
+
+//Assign_Doctor
+void Assigned_Doctor(){
+    int ID, i, found = 0;
+    
+    printf("Enter Patient_ID: ");
+    scanf("%d", &ID);
+    
+    for(i = 0; i < count; i++){
+        if(P[i].Patient_ID == ID){
+            if(strcmp(P[i].Patient_Disease, "Cold") == 0){
+                (strcpy(P[i].Patient_Disease, "Dimpal");
+            }
+            else if(strcmp(P[i].Patient_Disease, "Heart") == 0){
+                (strcpy(P[i].Patient_Disease, "Dimisha");
+            }
+            else if(strcmp(P[i].Patient_Disease, "Fever") == 0){
+                (strcpy(P[i].Patient_Disease, "Anita");
+            }
+            else if(trcmp(P[i].Patient_Disease, "Cancer") == 0){
+                (strcpy(P[i].Patient_Disease, "Deepti");
+            }
+            else{
+                (strcpy(P[i].Patient_Disease, "Dilip");
+            }
+            
+            printf("Doctor_Assign: %s\n", P[i].Assigned_Doctor);
+            found = 1;
+        }
+    }
+    
+    if(found == 0){
+        printf("Patient is not found!\n");
+    }
+}
+
+//Generate Bill
+void Generate_Bill(){
+    int ID, i, found = 0;
+    
+    printf("Enter Patient_ID: ");
+    scanf("%d", &ID);
+    
+    for(i = 0; i < count; i++){
+        if(P[i].Patient_ID == ID){
+            int room = 500;
+            int Doctor = 1000;
+            int Medicine = 300;
+            
+            P[i].Patient_Bill = (P[i].Patient_AdmissionDate * room) + Doctor + Medicine;
+            
+            printf("\n=======BILL=======\n");
+            printf("Patient_Name: %s\n", &P[i].Patient_Name);
+            printf("Assigned_Doctor: %s\n", &P[i].Assigned_Doctor);
+            printf("Total Bill: %d\n", &P[i].Patient_Bill);
+            
+            found = 1;
+        }
+    }
+    
+    if(found == 0){
+        printf("Patient is not found!\n");
+    }
+}
+
+
+//Main Program
+int main(){
+    int choice;
+    
+    while(1){
+        printf("\n=======Hospitai Management System========\n");
+        printf("1. Add_Patient\n");
+        printf("2. View_Patient\n");
+        printf("3. Search_Patient\n");
+        printf("4. Assigned_Doctor\n");
+        printf("5. Generate_Bill\n");
+        printf("6. Exit\n");
+        
+        printf("Enter the choice: ");
+        scanf("%d", &choice);
+        
+        switch(choice){
+            case 1:
+            Add_Patient();
+            break;
+            
+            case 2:
+            View_Patient();
+            break;
+            
+            case 3: 
+            Search_Patient(); 
+            break;
+            
+            case 4:
+            Assigned_Doctor(); 
+            break;
+            
+            case 5: 
+            Generate_Bill(); 
+            break;
+            
+            case 6: 
+            return 0;
+            
+            default: 
+            printf("Invalid Choice!\n");
+        }
+    }
+}
+
+
