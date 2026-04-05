@@ -1,0 +1,120 @@
+#include<stdio.h>
+#include<string.h>
+
+struct Question{
+    char Question[200];
+    char Option_A[100];
+    char Option_B[100];
+    char Option_C[100];
+    char Option_D[100];
+    char Correct_Answer;
+};
+
+
+int main(){
+    struct Question Q[10];
+    int score = 0;
+    char Answer;
+    int i;
+    
+    strcpy(Q[0].Question, "Which of the following is a correct way to declare a variable in C?");
+    strcpy(Q[0].Option_A, "int 1num;");
+    strcpy(Q[0].Option_B, "int num1;");
+    strcpy(Q[0].Option_C, "int @num;");
+    strcpy(Q[0].Option_D, "int num-1;");
+    Q[0].Correct_Answer = 'B';
+    
+    strcpy(Q[1].Question, "What is C language?");
+    strcpy(Q[1].Option_A, "Programming");
+    strcpy(Q[1].Option_B, "Game");
+    strcpy(Q[1].Option_C, "OS");
+    strcpy(Q[1].Option_D, "Browser");
+    Q[1].Correct_Answer = 'A';
+    
+    strcpy(Q[2].Question, "Which header file is required for using printf() function?");
+    strcpy(Q[2].Option_A, "stdlib.h");
+    strcpy(Q[2].Option_B, "conio.h");
+    strcpy(Q[2].Option_C, "stdio.h");
+    strcpy(Q[2].Option_D, "string.h");
+    Q[2].Correct_Answer = 'C';
+    
+    strcpy(Q[3].Question, "What is the correct way to comment a single line in C?");
+    strcpy(Q[3].Option_A, "/* comment */");
+    strcpy(Q[3].Option_B, "// comment");
+    strcpy(Q[3].Option_C, "<!-- comment -->");
+    strcpy(Q[3].Option_D, "# comment");
+    Q[3].Correct_Answer = 'B';
+    
+    strcpy(Q[4].Question, "Which loop is entry-controlled?");
+    strcpy(Q[4].Option_A, "do-while");
+    strcpy(Q[4].Option_B, "for");
+    strcpy(Q[4].Option_C, "None");
+    strcpy(Q[4].Option_D, "Infinite loop");
+    Q[4].Correct_Answer = 'B';
+    
+    strcpy(Q[5].Question, "Which header file is required for using printf() function?");
+    strcpy(Q[5].Option_A, "1 byte");
+    strcpy(Q[5].Option_B, "2 bytes");
+    strcpy(Q[5].Option_C, "4 bytes");
+    strcpy(Q[5].Option_D, "8 bytes");
+    Q[5].Correct_Answer = 'C';
+    
+    strcpy(Q[6].Question, "Which of the following is not a valid C data type?");
+    strcpy(Q[6].Option_A, "float");
+    strcpy(Q[6].Option_B, "double");
+    strcpy(Q[6].Option_C, "real");
+    strcpy(Q[6].Option_D, "char");
+    Q[6].Correct_Answer = 'C';
+    
+    strcpy(Q[7].Question, "Which operator is used to access the value at a pointer?");
+    strcpy(Q[7].Option_A, "&");
+    strcpy(Q[7].Option_B, "*");
+    strcpy(Q[7].Option_C, "->");
+    strcpy(Q[7].Option_D, "%");
+    Q[7].Correct_Answer = 'B';
+    
+    strcpy(Q[8].Question, "What is the capital of India");
+    strcpy(Q[8].Option_A, "Mumbai");
+    strcpy(Q[8].Option_B, "Delhi");
+    strcpy(Q[8].Option_C, "Kolkata");
+    strcpy(Q[8].Option_D, "Rajasthan");
+    Q[8].Correct_Answer = 'B';
+    
+     strcpy(Q[9].Question, "What is the correct syntax to open a file in write mode?");
+    strcpy(Q[9].Option_A, "exit()");
+    strcpy(Q[9].Option_B, "stop()");
+    strcpy(Q[9].Option_C, "end()");
+    strcpy(Q[9].Option_D, "return stop");
+    Q[9].Correct_Answer = 'A';
+    
+    printf("=======Welcome To The Quiz Game=======\n\n");
+    
+    for(i = 0; i < 10; i++){
+        printf("Q%d: %s\n", i + 1, Q[i].Question);
+        printf("A: %s\n", Q[i].Option_A);
+        printf("B: %s\n", Q[i].Option_B);
+        printf("C: %s\n", Q[i].Option_C);
+        printf("D: %s\n", Q[i].Option_D);
+        printf("Your Answer: ");
+        scanf("%s", &Answer);
+        
+        
+        
+        if(Answer == Q[i].Correct_Answer){
+            printf("Correct Answer!\n\n");
+            score++;
+        }
+        else{
+            printf("Wrong Answer! Correct Answer: %c\n\n", Q[i].Correct_Answer);
+        }
+    }
+    
+    printf("=======Quiz Complited=======");
+    printf("Total Question: 10\n");
+    printf("Correct Answer: %d\n", score);
+    printf("Wrong Answer: %d\n", 10 - score);
+    printf("Your Score: %d/10\n", score);
+    printf("Percentage: %.2f\n", (score/10.0)*100);
+    
+    return 0;
+}
