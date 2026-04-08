@@ -1,0 +1,121 @@
+#include<stdio.h>
+#include<math.h>
+
+int main(){
+    float num_1, num_2, result;
+    int n, i;
+    long long fact = 1;
+    int choice;
+    
+    printf("=======BASIC CALCULATION=======\n\n");
+    
+    printf("Enter First number: ");
+    scanf("%f", &num_1);
+    
+    printf("Enter Second number: ");
+    scanf("%f", &num_2);
+    
+    printf("1. Addition\n");
+    printf("2. Subtraction\n");
+    printf("3. Multiplication\n");
+    printf("4. Division\n");
+    printf("5. Modulus\n");
+    printf("6. Power\n");
+    printf("7. Square\n");
+    printf("8. Cube\n");
+    printf("9. Square Root\n");
+    printf("10. Average\n");
+    printf("11. Percentage\n");
+    printf("12. Factorial\n");
+    
+    printf("\nEnter your choice: ");
+    scanf("%d", &choice);
+    
+    switch(choice){
+        case 1:
+        printf("Result = %.2f", num_1 + num_2);
+        break;
+        
+        case 2:
+        printf("Result = %.2f", num_1 - num_2);
+        break;
+        
+        case 3:
+        printf("Result = %.2f", num_1 * num_2);
+        break;
+        
+        case 4:
+        if(num_2 == 0){
+            printf("Error! Division by Zero is not posible");
+        }
+        else {
+            printf("Result = %.2f", num_1 / num_2);
+        }
+        break;
+        
+        case 5:
+        int a = (int)num_1;
+        int b = (int)num_2;
+        
+        if(num_2 == 0){
+            printf("Error!");
+        }
+        else{
+            printf("Result = %d", a % b);
+        }
+        break;
+        
+        case 6:
+        printf("Result = %.2f", pow(num_1, num_2));
+        break;
+        
+        case 7:
+        printf("Square = %.2f", num_1 * num_1);
+        break;
+        
+        case 8:
+        printf("Square = %.2f", num_1 * num_1 * num_1);
+        break;
+        
+        case 9:
+        if(num_1 < 1){
+            printf("Error! Negative Number");
+        }
+        else{
+            printf("Square Root = %.2f", sqrt(num_1));
+        }
+        break;
+        
+        case 10:
+        printf("Avarage = %.2f", (num_1 + num_2) / 2);
+        break;
+        
+        case 11:
+        if(num_2 == 0){
+            printf("Error!");
+        }
+        else{
+            printf("Percentage = %.2f", (num_1 / num_2) * 100);
+        }
+        break;
+        
+        case 12:
+        if(n < 0){
+            printf("Error!");
+        }
+        else{
+            for(i = 0; i <= n; i++){
+                fact *= i;
+            }
+            printf("Factorial = %lld", fact);
+        }
+        break;
+        
+        default:
+        printf("Invalid Choice!");
+    }
+    
+    printf("\n=======PROGRAM END=======\n");
+    
+    return 0;
+}
