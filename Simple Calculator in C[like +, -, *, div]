@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include<time.h>
+
+int main(){
+    float num_1, num_2, result;
+    char operation;
+    
+    printf("========BASIC CALCULATOR=======\n\n");
+    
+    printf("Enter the First number: ");
+    scanf("%f", &num_1);
+    
+    printf("Enter the Second Number: ");
+    scanf("%f", &num_2);
+    
+    printf("Enter operation (+, -, *, /): ");
+    scanf(" %c", &operation);
+    
+    if(operation == '+'){
+        result = num_1 + num_2;
+        printf("Result = %.2f\n", result);
+    }
+    else if(operation == '-'){
+        result = num_1 - num_2;
+        printf("Result = %.2f\n", result);
+    }
+    else if(operation == '*'){
+        result = num_1 * num_2;
+        printf("Result = %.2f\n", result);
+    }
+    else if(operation == '/'){
+       if(num_2 == 0){
+           printf("Error! Division by zero is not allowed.\n");
+       }
+       else{
+           result = num_1 / num_2;
+           printf("Result = %.2f\n", result);
+       }
+    }
+    else{
+        printf("Invalid operation!\n");
+    }
+    
+    printf("=======PROGRAM END=======");
+    
+    return 0;
+}
